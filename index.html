@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birthday Surprise</title>
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- GSAP Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+  <!-- خلفية الجزيئات -->
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- القلوب المتطايرة -->
+  <div class="floating-hearts-layer" id="floatingHearts"></div>
+
+  <!-- عنصر الصوت مشير لملف song.mp3 أو lower/song.mp3 -->
+  <audio id="bgAudio" src="lower/song.mp3" preload="auto" loop></audio>
+
+  <div class="main-card" id="cardContainer">
+    <div class="header-badge">
+      <span class="dot"></span> 2008 / 10 / 18
+    </div>
+
+    <div class="content-wrapper">
+      <h1 class="title">Birthday Surprise ✨</h1>
+      
+      <!-- عداد العمر -->
+      <div class="age-counter" id="ageCounter">
+        <div class="unit"><span id="y">17</span><label>سنة</label></div>
+        <div class="unit"><span id="d">352</span><label>يوم</label></div>
+        <div class="unit"><span id="h">14</span><label>ساعة</label></div>
+        <div class="unit"><span id="m">4</span><label>دقيقة</label></div>
+        <div class="unit"><span id="s">30</span><label>ثانية</label></div>
+      </div>
+    </div>
+
+    <!-- منطقة المسرح التفاعلي -->
+    <div class="stage" id="stage">
+      <div class="sound-wave wave-1"></div>
+      <div class="sound-wave wave-2"></div>
+
+      <!-- القوس والسهم -->
+      <div class="bow-container" id="bow">
+        <svg viewBox="0 0 100 100" class="bow-svg">
+          <path d="M 20,10 Q 75,50 20,90" fill="none" stroke="url(#grad)" stroke-width="5" stroke-linecap="round"/>
+          <line x1="20" y1="10" x2="20" y2="90" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+          <defs>
+            <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ff416c"/>
+              <stop offset="100%" stop-color="#8a2387"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="arrow" id="arrow">➔</div>
+      </div>
+
+      <!-- القلب المكون من كلمات -->
+      <div class="heart-text-container" id="heartTarget">
+        <div class="ui" id="textHeartUI"></div>
+      </div>
+
+      <!-- نص I Love You -->
+      <div class="love-written-wrapper" id="loveTextWrapper">
+        <h2 class="glowing-love-text" id="loveText"></h2>
+      </div>
+
+      <!-- الكعكة والشمعة -->
+      <div class="interactive-cake" id="cakeContainer">
+        <div class="orbit-hearts">
+          <span style="--i:1">💕</span>
+          <span style="--i:2">💖</span>
+          <span style="--i:3">💗</span>
+          <span style="--i:4">💓</span>
+        </div>
+        <div class="candle" id="candle">
+          <div class="flame" id="flame"></div>
+        </div>
+        <div class="cake-3d-text">🎂</div>
+      </div>
+    </div>
+
+    <!-- شريط الإهداءات -->
+    <div class="marquee-wrapper">
+      <div class="marquee-content">
+        <span>🎉 Happy Birthday!</span>
+        <span>💖 We fell in love in October</span>
+        <span>✨ Best Wishes Always!</span>
+        <span>🎂 Make a Wish!</span>
+      </div>
+    </div>
+
+    <div class="action-area">
+      <button class="cta-btn" id="launchBtn">
+        <span>إطلاق المفاجأة ✨</span>
+      </button>
+      <p class="hint-text" id="hintText">انقر لإطلاق سهم الحب وتشغيل الأغنية 🎵</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
